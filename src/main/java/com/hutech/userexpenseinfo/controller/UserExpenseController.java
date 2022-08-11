@@ -22,28 +22,38 @@ public class UserExpenseController {
 	private UserExpenseService userService;
 
 	@GetMapping("/getUser/{expenseId}")
-	public UserExpense getUserData(@PathVariable int expenseId) throws ExecutionException, InterruptedException {
+	public UserExpense getUserData(@PathVariable String expenseId) throws ExecutionException, InterruptedException {
 		return userService.getUserData(expenseId);
 	}
 
 	@GetMapping(value = "/getAllData")
-	List<UserExpense> getUser() throws ExecutionException,InterruptedException {
+	List<UserExpense> getUser() throws ExecutionException, InterruptedException {
 		return userService.findAll();
 
 	}
+	@GetMapping("/getCategory/{categoryId}")
+	public UserExpense findByCategory(@PathVariable String categoryId) throws ExecutionException, InterruptedException {
+		return userService.findByCategory(categoryId);
+	}
+//	@GetMapping(value = "/getAllCategory")
+//	List<UserExpense> getUser() throws ExecutionException, InterruptedException {
+//		return userService.findAll();
+//
+//	}
 
 	@PostMapping("/createUser")
 	public String saveUser(@RequestBody UserExpense user) throws InterruptedException, ExecutionException {
 
-		 userService.saveUser(user);
-		 return"user created";
+		userService.saveUser(user);
+		return "user created";
 
 	}
 
 	@PutMapping("/updateUser/{expenseId}")
-	public String updateUser(@PathVariable  String expenseId,@RequestBody UserExpense user) throws InterruptedException, ExecutionException {
+	public String updateUser(@PathVariable String expenseId, @RequestBody UserExpense user)
+			throws InterruptedException, ExecutionException {
 
-		return userService.updateUser(expenseId,user);
+		return userService.updateUser(expenseId, user);
 
 	}
 
