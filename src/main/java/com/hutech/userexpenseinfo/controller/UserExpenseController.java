@@ -1,5 +1,5 @@
 package com.hutech.userexpenseinfo.controller;
-
+// this is the test line
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hutech.userexpenseinfo.model.UserExpense;
@@ -31,15 +30,6 @@ public class UserExpenseController {
 		return userService.findAll();
 
 	}
-	@GetMapping("/getCategory/{categoryId}")
-	public UserExpense findByCategory(@PathVariable String categoryId) throws ExecutionException, InterruptedException {
-		return userService.findByCategory(categoryId);
-	}
-//	@GetMapping(value = "/getAllCategory")
-//	List<UserExpense> getUser() throws ExecutionException, InterruptedException {
-//		return userService.findAll();
-//
-//	}
 
 	@PostMapping("/createUser")
 	public String saveUser(@RequestBody UserExpense user) throws InterruptedException, ExecutionException {
@@ -61,5 +51,15 @@ public class UserExpenseController {
 	public String deleteUser(@PathVariable String expenseId) throws ExecutionException, InterruptedException {
 		return userService.deleteUser(expenseId);
 	}
+
+	@GetMapping("/getCategory/{categoryId}")
+	public UserExpense findByCategory(@PathVariable String categoryId) throws ExecutionException, InterruptedException {
+		return userService.findByCategory(categoryId);
+	}
+//	@GetMapping(value = "/getAllCategory")
+//	List<UserExpense> getUser() throws ExecutionException, InterruptedException {
+//		return userService.findAll();
+//
+//	}
 
 }
