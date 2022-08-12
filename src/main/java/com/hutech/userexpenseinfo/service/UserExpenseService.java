@@ -74,18 +74,4 @@ public class UserExpenseService {
 		return "User Deleted" + " with name " + " " + expenseId;
 	}
 
-	public UserExpense findByCategory(String categoryId) throws InterruptedException, ExecutionException {
-		Firestore dbFirestore = FirestoreClient.getFirestore();
-		DocumentReference documentReference = dbFirestore.collection(COLLECTION_NAME).document(categoryId);
-		ApiFuture<DocumentSnapshot> future = documentReference.get();
-		DocumentSnapshot document = future.get();
-		if (document.exists()) {
-			UserExpense user = document.toObject(UserExpense.class);
-			return user;
-		} else {
-			return null;
-		}
-
-	}
-
 }

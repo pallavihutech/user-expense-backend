@@ -1,4 +1,5 @@
 package com.hutech.userexpenseinfo.controller;
+
 // this is the test line
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -51,15 +52,5 @@ public class UserExpenseController {
 	public String deleteUser(@PathVariable String expenseId) throws ExecutionException, InterruptedException {
 		return userService.deleteUser(expenseId);
 	}
-
-	@GetMapping("/getCategory/{categoryId}")
-	public UserExpense findByCategory(@PathVariable String categoryId) throws ExecutionException, InterruptedException {
-		return userService.findByCategory(categoryId);
-	}
-//	@GetMapping(value = "/getAllCategory")
-//	List<UserExpense> getUser() throws ExecutionException, InterruptedException {
-//		return userService.findAll();
-//
-//	}
 
 }

@@ -4,9 +4,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
 public class UserExpense {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,8 +20,6 @@ public class UserExpense {
 	private int quantity;
 	private double subTotal;
 	private String description;
-	private String categoryName;
-	private String categoryId;
 
 	public String getPaid_by() {
 		return paid_by;
@@ -60,7 +55,7 @@ public class UserExpense {
 
 	public UserExpense(String paid_by, String date, double amount, String mode_of_payment, String nature_of_expense,
 			String cost_of_center, boolean status, int quantity, String expenseId, double subTotal,
-			String description, String categoryId, String categoryName) {
+			String description) {
 		super();
 		this.expenseId = expenseId;
 		this.paid_by = paid_by;
@@ -73,8 +68,6 @@ public class UserExpense {
 		this.status = status;
 		this.quantity = quantity;
 		this.description = description;
-		this.categoryId=categoryId;
-		this.categoryName=categoryName;
 
 	}
 
@@ -132,21 +125,6 @@ public class UserExpense {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-	public String getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public UserExpense() {
