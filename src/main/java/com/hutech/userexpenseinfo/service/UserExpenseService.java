@@ -24,7 +24,8 @@ public class UserExpenseService {
 		String id = dbFirestore.collection(COLLECTION_NAME).document().getId();
 		user.setExpenseId(id);
 		ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(COLLECTION_NAME).document(id).set(user);
-		return collectionApiFuture.get().getUpdateTime().toString();
+		collectionApiFuture.get().getUpdateTime().toString();
+		return "ExpenseDetails Saved ";
 	}
 
 	public List<UserExpense> findAll() throws InterruptedException, ExecutionException {

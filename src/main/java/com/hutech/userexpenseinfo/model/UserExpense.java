@@ -20,6 +20,8 @@ public class UserExpense {
 	private int quantity;
 	private double subTotal;
 	private String description;
+	private String categoryId;
+	private String categoryName;
 
 	public String getPaid_by() {
 		return paid_by;
@@ -54,8 +56,8 @@ public class UserExpense {
 	}
 
 	public UserExpense(String paid_by, String date, double amount, String mode_of_payment, String nature_of_expense,
-			String cost_of_center, boolean status, int quantity, String expenseId, double subTotal,
-			String description) {
+			String cost_of_center, boolean status, int quantity, String expenseId, double subTotal,String categoryId,
+			String description, String categoryName) {
 		super();
 		this.expenseId = expenseId;
 		this.paid_by = paid_by;
@@ -68,6 +70,8 @@ public class UserExpense {
 		this.status = status;
 		this.quantity = quantity;
 		this.description = description;
+		this.categoryId=categoryId;
+		this.categoryName=categoryName;
 
 	}
 
@@ -126,10 +130,27 @@ public class UserExpense {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 
 	public UserExpense() {
 		super();
 
 	}
 
+	
 }
