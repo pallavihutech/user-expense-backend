@@ -65,7 +65,7 @@ public class UserExpenseService {
 		ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(COLLECTION_NAME).document(expenseId)
 				.set(user);
 
-		return "user updated";
+		return "update Successfully";
 	}
 
 	public String deleteUser(String expenseId) {

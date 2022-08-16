@@ -49,8 +49,10 @@ public class UserExpenseController {
 		String uExpense = userService.updateUser(expenseId, user);
 
 		return new ResponseEntity<String>("Update record Successfully ", HttpStatus.CREATED);
+	
 
 	}
+	
 
 	@DeleteMapping("/deleteUser/{expenseId}")
 	public String deleteUser(@PathVariable String expenseId) throws ExecutionException, InterruptedException {
