@@ -14,14 +14,15 @@ public class UserExpense {
 	private String date;
 	private double amount;
 	private String mode_of_payment;
-	private String nature_of_expense;
-	private String cost_of_center;
-	private boolean status;
+	private String expenseName;
 	private int quantity;
 	private double subTotal;
 	private String description;
-	private String categoryId;
-	private String categoryName;
+	private String paid_to;
+	// private String cost_of_center;
+	// private boolean status;
+	// private String categoryId;
+	// private String categoryName;
 
 	public String getPaid_by() {
 		return paid_by;
@@ -39,13 +40,13 @@ public class UserExpense {
 		this.expenseId = expenseId;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+//	public boolean isStatus() {
+//		return status;
+//	}
+//
+//	public void setStatus(boolean status) {
+//		this.status = status;
+//	}
 
 	public int getQuantity() {
 		return quantity;
@@ -55,9 +56,8 @@ public class UserExpense {
 		this.quantity = quantity;
 	}
 
-	public UserExpense(String paid_by, String date, double amount, String mode_of_payment, String nature_of_expense,
-			String cost_of_center, boolean status, int quantity, String expenseId, double subTotal,String categoryId,
-			String description, String categoryName) {
+	public UserExpense(String paid_by, String date, double amount, String mode_of_payment, String expenseName,
+			int quantity, String expenseId, double subTotal, String description, String paid_to) {
 		super();
 		this.expenseId = expenseId;
 		this.paid_by = paid_by;
@@ -65,13 +65,12 @@ public class UserExpense {
 		this.amount = amount;
 		this.subTotal = subTotal;
 		this.mode_of_payment = mode_of_payment;
-		this.nature_of_expense = nature_of_expense;
-		this.cost_of_center = cost_of_center;
-		this.status = status;
+		this.expenseName = expenseName;
 		this.quantity = quantity;
 		this.description = description;
-		this.categoryId=categoryId;
-		this.categoryName=categoryName;
+		this.setPaid_to(paid_to);
+//		this.cost_of_center = cost_of_center;
+//		this.status = status;
 
 	}
 
@@ -99,21 +98,21 @@ public class UserExpense {
 		this.mode_of_payment = mode_of_payment;
 	}
 
-	public String getNature_of_expense() {
-		return nature_of_expense;
+	public String getexpenseName() {
+		return expenseName;
 	}
 
-	public void setNature_of_expense(String nature_of_expense) {
-		this.nature_of_expense = nature_of_expense;
+	public void setexpenseName(String expenseName) {
+		this.expenseName = expenseName;
 	}
 
-	public String getCost_of_center() {
-		return cost_of_center;
-	}
-
-	public void setCost_of_center(String cost_of_center) {
-		this.cost_of_center = cost_of_center;
-	}
+//	public String getCost_of_center() {
+//		return cost_of_center;
+//	}
+//
+//	public void setCost_of_center(String cost_of_center) {
+//		this.cost_of_center = cost_of_center;
+//	}
 
 	public double getSubTotal() {
 		return subTotal;
@@ -130,20 +129,12 @@ public class UserExpense {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getCategoryId() {
-		return categoryId;
+	public String getPaid_to() {
+		return paid_to;
 	}
 
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+	public void setPaid_to(String paid_to) {
+		this.paid_to = paid_to;
 	}
 
 
