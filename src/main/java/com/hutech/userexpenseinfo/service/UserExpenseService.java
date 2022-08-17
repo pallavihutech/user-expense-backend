@@ -19,13 +19,13 @@ import com.hutech.userexpenseinfo.model.UserExpense;
 public class UserExpenseService {
 	private static final String COLLECTION_NAME = "expense";
 
-	public String saveUser(UserExpense user) throws InterruptedException, ExecutionException {
+	public UserExpense saveUser(UserExpense user) throws InterruptedException, ExecutionException {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		String id = dbFirestore.collection(COLLECTION_NAME).document().getId();
 		user.setExpenseId(id);
 		ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(COLLECTION_NAME).document(id).set(user);
 		collectionApiFuture.get().getUpdateTime().toString();
-		return "ExpenseDetails Saved ";
+		return user;
 	}
 
 	public List<UserExpense> findAll() throws InterruptedException, ExecutionException {
@@ -60,12 +60,12 @@ public class UserExpenseService {
 
 	}
 
-	public String updateUser(String expenseId, UserExpense user) {
+	public UserExpense updateUser(String expenseId, UserExpense user) {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection(COLLECTION_NAME).document(expenseId)
 				.set(user);
 
-		return "update Successfully";
+		return user;
 	}
 
 	public String deleteUser(String expenseId) {
