@@ -21,6 +21,7 @@ public class FireBaseInitialize {
 				.setCredentials(GoogleCredentials.fromStream(serviceAccount)).build();
 
 		FirebaseApp.initializeApp(options);
+
 	}
 
 }
