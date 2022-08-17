@@ -36,23 +36,21 @@ public class UserExpenseController {
 	}
 
 	@PostMapping("/createExpense")
-	public ResponseEntity<String> saveUser(@RequestBody UserExpense user)
+	public ResponseEntity<UserExpense> saveUser(@RequestBody UserExpense user)
 			throws InterruptedException, ExecutionException {
-		String usExpense = userService.saveUser(user);
-		return new ResponseEntity<String>("ExpenseInfo record Created", HttpStatus.CREATED);
+		//String usExpense = userService.saveUser(user);
+		return new ResponseEntity<UserExpense>(userService.saveUser(user), HttpStatus.CREATED);
 
 	}
 
 	@PutMapping("/updateUser/{expenseId}")
-	public ResponseEntity<String> updateUser(@PathVariable String expenseId, @RequestBody UserExpense user)
+	public ResponseEntity<UserExpense> updateUser(@PathVariable String expenseId, @RequestBody UserExpense user)
 			throws InterruptedException, ExecutionException {
-		String uExpense = userService.updateUser(expenseId, user);
+		//String uExpense = userService.updateUser(expenseId, user);
 
-		return new ResponseEntity<String>("Update record Successfully ", HttpStatus.CREATED);
-	
+		return new ResponseEntity<UserExpense>(userService.updateUser(expenseId, user), HttpStatus.CREATED);
 
 	}
-	
 
 	@DeleteMapping("/deleteUser/{expenseId}")
 	public String deleteUser(@PathVariable String expenseId) throws ExecutionException, InterruptedException {
