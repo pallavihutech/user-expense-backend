@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hutech.userexpenseinfo.model.UserExpense;
@@ -22,44 +23,40 @@ public class UserExpenseController {
 	private UserExpenseService userService;
 
 	@GetMapping("/getUser/{expenseId}")
-	public UserExpense getUserData(@PathVariable String expenseId) throws ExecutionException, InterruptedException {
-		return userService.getUserData(expenseId);
+	public ResponseEntity<UserExpense> getUserData(@PathVariable String expenseId)
+			throws ExecutionException, InterruptedException {
+
+		return new ResponseEntity<UserExpense>(userService.getUserData(expenseId), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/getAllData")
-	List<UserExpense> getUser() throws ExecutionException, InterruptedException {
-		return userService.findAll();
+	public ResponseEntity<List<UserExpense>> getUser() throws ExecutionException, InterruptedException {
+		return new ResponseEntity<List<UserExpense>>(userService.findAll(), HttpStatus.OK);
 
 	}
-	@GetMapping("/getCategory/{categoryId}")
-	public UserExpense findByCategory(@PathVariable String categoryId) throws ExecutionException, InterruptedException {
-		return userService.findByCategory(categoryId);
-	}
-//	@GetMapping(value = "/getAllCategory")
-//	List<UserExpense> getUser() throws ExecutionException, InterruptedException {
-//		return userService.findAll();
-//
-//	}
 
-	@PostMapping("/createUser")
-	public String saveUser(@RequestBody UserExpense user) throws InterruptedException, ExecutionException {
-
-		userService.saveUser(user);
-		return "user created";
+	@PostMapping("/createExpense")
+	public ResponseEntity<UserExpense> saveUser(@RequestBody UserExpense user)
+			throws InterruptedException, ExecutionException {
+		//String usExpense = userService.saveUser(user);
+		return new ResponseEntity<UserExpense>(userService.saveUser(user), HttpStatus.CREATED);
 
 	}
 
 	@PutMapping("/updateUser/{expenseId}")
-	public String updateUser(@PathVariable String expenseId, @RequestBody UserExpense user)
+	public ResponseEntity<UserExpense> updateUser(@PathVariable String expenseId, @RequestBody UserExpense user)
 			throws InterruptedException, ExecutionException {
+		//String uExpense = userService.updateUser(expenseId, user);
 
-		return userService.updateUser(expenseId, user);
+		return new ResponseEntity<UserExpense>(userService.updateUser(expenseId, user), HttpStatus.CREATED);
 
 	}
 
 	@DeleteMapping("/deleteUser/{expenseId}")
 	public String deleteUser(@PathVariable String expenseId) throws ExecutionException, InterruptedException {
-		return userService.deleteUser(expenseId);
+
+		userService.deleteUser(expenseId);
+		return "ExpenseInfo has deleted for the ID:" + expenseId;
 	}
 
 }
